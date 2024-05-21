@@ -15,19 +15,19 @@ describe('DemoBlaze Shopping Flow', () => {
 
     // Login
     cy.get('#login2').click();
-    cy.get('#loginusername').type('testuser'); // Ganti dengan username yang valid
-    cy.get('#loginpassword').type('testpassword'); // Ganti dengan password yang valid
+    cy.get('#loginusername').type('testuser');
+    cy.get('#loginpassword').type('testpassword');
     cy.get('#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary').click();
 
     // Add to Cart
-    cy.get('.hrefch').first().click(); // Klik produk pertama
-    cy.get('.btn-success').click(); // Klik tombol "Add to cart"
+    cy.get('.hrefch').first().click(); 
+    cy.get('.btn-success').click(); 
     cy.on('window:alert', (str) => {
       expect(str).to.equal('Product added.');
     });
 
     // Verify Item in Cart
     cy.get('#cartur').click();
-    cy.get('tbody > tr').should('have.length.at.least', 1); // Pastikan ada minimal 1 produk di cart
+    cy.get('tbody > tr').should('have.length.at.least', 1); 
   });
 });
